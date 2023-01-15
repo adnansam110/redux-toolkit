@@ -35,13 +35,15 @@ function App() {
     <div className="App">
       <h1>Dummy Users</h1>
       <div data-testid="users-list">
-        {loading
-          ? "Loading..."
-          : users?.map((user) => (
-              <p key={user.id} data-testid="user-data">
-                {user.name}
-              </p>
-            ))}
+        {loading ? (
+          <div data-testid="loading-text">Loading...</div>
+        ) : (
+          users?.map((user) => (
+            <p key={user.id} data-testid="user-data">
+              {user.name}
+            </p>
+          ))
+        )}
       </div>
       {(!users?.length || !loading) && (
         <button data-testid="fetch-user-btn" onClick={() => fetchUsers()}>
